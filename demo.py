@@ -58,25 +58,25 @@ if __name__ == '__main__':
     
     if best_match:
         print(f'\n Pour le morceau recherché : {song[:-4]} on a :')
-        print(f"Morceau identifié : {best_match} (score={best_score})")
+        print(f" Morceau identifié : {best_match} (score={best_score})")
         # To display, need to recompute the matcher for the best
         for item in database:
             if item['song'] == best_match:
                 matcher = Matching(hashes1=hashes, hashes2=item['hashcodes'])
                 break
-        print("Affichage du nuage de points :")
+        print("\n Affichage du nuage de points :")
         matcher.display_scatterplot()
         print("Affichage de l'histogramme :")
         matcher.display_histogram()
     else:
-        print(f"\nAucun morceau correspondant trouvé, best_score={best_score}")
+        print(f"\n Aucun morceau correspondant trouvé, best_score={best_score}")
         
         
     filename = "Projet-TDS/secret_sample.wav"
     fs, s = read(filename)
     encoder.process(fs, s)
     hashes = encoder.hashes
-    print("Recherche en cours pour le morceau secret")
+    print("\n Recherche en cours pour le morceau secret")
     best_match = None
     best_score = 0
     for item in database:
